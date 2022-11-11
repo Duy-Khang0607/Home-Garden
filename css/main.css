@@ -1,0 +1,274 @@
+.sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  background-color: #4d5df9;
+  width: 120px;
+  /* width: 100px; */
+  border-radius: 20px;
+  padding-top: 40px;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.sidebar.active {
+  width: 340px;
+}
+.sidebar ul {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.sidebar ul li b:nth-child(1) {
+  position: absolute;
+  top: -20px;
+  height: 20px;
+  width: 100%;
+  background-color: #fff;
+  display: none;
+}
+.sidebar ul li b:nth-child(1)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  background-color: #4d5df9;
+}
+.sidebar ul li b:nth-child(2) {
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  width: 100%;
+  background-color: #fff;
+  display: none;
+}
+.sidebar ul li b:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  background-color: #4d5df9;
+}
+
+.sidebar ul li.active b:nth-child(1),
+.sidebar ul li.active b:nth-child(2) {
+  display: block;
+}
+
+.sidebar ul li {
+  list-style: none;
+  position: relative;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 100%;
+}
+.sidebar ul li.active {
+  background-color: #fff;
+}
+.sidebar ul li.active a {
+  color: black;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  display: flex;
+  font-size: 1.8rem;
+  line-height: 100px;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+.sidebar ul li a ion-icon {
+  position: relative;
+  display: block;
+  min-width: 60%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 200;
+  padding-left: 20px;
+}
+.sidebar ul li a span:last-child {
+  margin-left: 30px;
+}
+.toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  transition: all 0.3s;
+}
+.toggle ion-icon {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 50px;
+  display: none;
+}
+
+.toggle ion-icon.open,
+.toggle.active ion-icon.close {
+  display: block;
+}
+
+.toggle.active ion-icon.open,
+.toggle ion-icon.close {
+  display: none;
+}
+
+.toggle.active {
+  background-color: #4d5df9;
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  visibility: none;
+  display: none;
+}
+
+.check {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: ease-in 0.2s;
+}
+
+.check:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: #4d5df9;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: 0.2s;
+  transform: translateX(0px);
+}
+input[type="checkbox"]:checked ~ .check {
+  background-color: #071ac4;
+}
+input[type="checkbox"]:checked ~ .check:after {
+  transform: translateX(20px);
+  background-color: #fff;
+}
+
+/* ---------------- Control Sensor ------------  */
+.garden__tittle {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #4d5df9;
+  line-height: 30px;
+  text-align: center;
+  padding: 20px 0;
+}
+.garden__content img {
+  background-color: transparent;
+  object-fit: cover;
+}
+.col-4 {
+  margin: 20px 0;
+}
+.garden__item {
+  position: relative;
+  background-color: #4d5df9;
+  border-radius: 10px;
+  width: 450px;
+  height: 300px;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 5px 5px 5px 5px #6d7aec;
+  transition: all 0.5s;
+}
+.garden__item:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+.garden__item h3 {
+  line-height: 30px;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+  font-weight: 400;
+}
+.garden__item p {
+  font-size: 1.4rem;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.garden__item #rainOn {
+  /* animation: name duration timing-function delay iteration-count direction
+    fill-mode; */
+  /* animation: rainOn 0.5s linear 4s infinite alternate; */
+  /* animation: none; */
+  z-index: 1;
+}
+.rain {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  opacity: 0;
+}
+.rain span {
+  position: relative;
+  bottom: 50px;
+  left: 40%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #30a6eb;
+  margin: 0 2px;
+  border-radius: 50%;
+  animation: rain 5s linear infinite;
+  animation-duration: calc(15s / var(--i));
+}
+#imgServo {
+  /* transform: rotate(30deg);
+  animation: rainOn 0.5s linear 4s infinite alternate; */
+  transition: all 0.5s;
+}
+
+/* ----------------- Hiệu ứng ----------- */
+@keyframes rainOn {
+  50% {
+    transform: translateY(10x);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes rain {
+  0% {
+    transform: translate(0);
+  }
+  70% {
+    transform: translateY(100px) scale(0);
+  }
+  100% {
+    transform: translateY(100px) scale(1);
+  }
+}

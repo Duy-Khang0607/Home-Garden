@@ -62,8 +62,8 @@ database.ref().on("value", (snap) => {
 });
 
 function soilTemp() {
-  var firebaseSoil = firebase.database().ref("Garden");
-  var firebaseTemp = firebase.database().ref("Garden");
+  var firebaseSoil = firebase.database();
+  var firebaseTemp = firebase.database();
   firebaseSoil.set(valueSoil);
   firebaseTemp.set(valueTemp);
 }

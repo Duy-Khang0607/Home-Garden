@@ -30,7 +30,7 @@ function dataFirebase(rain, servo, lamp, motor) {
 
 firebase
   .database()
-  .ref("Garden")
+  .ref()
   .on("value", (snap) => {
     var rain = snap.val().Rain;
     var servo = snap.val().servo;

@@ -48,27 +48,27 @@ firebase
     dataFirebase(rain, servo, lamp, motor);
   });
 
-// -------------- Sensor Soil -------------
+// -------------- Sensor Soil,Temp -------------
 var soil = document.querySelector("#valueSoil");
-firebase
-  .database()
-  .ref("Garden")
-  .on("value", (snap) => {
-    valueSoil = snap.val().soil;
-    soil.innerHTML = snap.val().soil;
-    firebase.database().ref().set(valueSoil);
-  });
-
-// -------------- Sensor Temp -------------
 var temp = document.querySelector("#valueTemperature");
-firebase
-  .database()
-  .ref("Garden")
-  .on("value", (snap) => {
-    valueTemp = snap.val().temp;
-    temp.innerHTML = snap.val().temp;
-    firebase.database().ref().set(valueTemp);
-  });
+var database = firebase.database();
+database.ref().on("value", (snap) => {
+  valueSoil = snap.val().soil;
+  soil.innerHTML = snap.val().soil;
+  valueTemp = snap.val().temp;
+  temp.innerHTML = snap.val().temp;
+});
+
+function soilTemp() {
+  var firebaseSoil = firebase.database().ref().child("soil");
+  var firebaseTemp = firebase.database().ref().child("temp");
+  firebaseSoil.set(valueSoil);
+  firebaseTemp.set(valueTemp);
+}
+
+window.onload = () => {
+  soilTemp();
+};
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

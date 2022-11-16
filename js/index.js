@@ -21,7 +21,7 @@ var valueMotor = "OFF";
 var valueSoil;
 var valueTemp;
 
-function dataFirebase(Rain, servo, lamp, motor, soil, temp) {
+function dataFirebase(rain, servo, lamp, motor, soil, temp) {
   firebase.database().ref("Garden").set({
     rain,
     servo,

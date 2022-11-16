@@ -49,14 +49,16 @@ firebase
   });
 
 // -------------- Sensor Soil,Temp -------------
-var soil = document.querySelector("#valueSoil");
-var temp = document.querySelector("#valueTemperature");
+
 var database = firebase.database();
 database.ref().on("value", (snap) => {
+  var soil = document.querySelector("#valueSoil");
+  var temp = document.querySelector("#valueTemperature");
   valueSoil = snap.val().soil;
   soil.innerHTML = snap.val().soil;
   valueTemp = snap.val().temp;
   temp.innerHTML = snap.val().temp;
+  soilTemp();
 });
 
 function soilTemp() {
@@ -65,10 +67,6 @@ function soilTemp() {
   firebaseSoil.set(valueSoil);
   firebaseTemp.set(valueTemp);
 }
-
-window.onload = () => {
-  soilTemp();
-};
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

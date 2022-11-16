@@ -42,9 +42,6 @@ firebase
     if (servo === "ON") document.querySelector("#btnServo").click();
     if (lamp === "ON") document.querySelector("#btnLight").click();
     if (motor === "ON") document.querySelector("#btnMotor").click();
-    else {
-      return;
-    }
   });
 
 // -------------- Sensor Soil -------------

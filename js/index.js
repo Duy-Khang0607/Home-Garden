@@ -61,9 +61,10 @@ database.ref("Garden").on("value", (snap) => {
   soil.innerHTML = snap.val().soil;
   valueTemp = snap.val().temp;
   temp.innerHTML = snap.val().temp;
+  firebase.database().ref("Garden").set(valueSoil);
+  firebase.database().ref("Garden").set(valueTemp);
   console.log(soil, "soil");
   console.log(temp, "temp");
-  dataFirebase(valueSoil, valueTemp);
 });
 
 function sensorRain() {

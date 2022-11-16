@@ -21,14 +21,14 @@ var valueMotor = "OFF";
 var valueSoil;
 var valueTemp;
 
-function dataFirebase(rain, servo, lamp, motor, soil, temp) {
+function dataFirebase(rain, servo, lamp, motor) {
   firebase.database().ref("Garden").set({
     rain,
     servo,
     lamp,
     motor,
-    soil,
-    temp,
+    // soil,
+    // temp,
   });
 }
 
@@ -40,8 +40,8 @@ firebase
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
-    var soil = snap.val().soil;
-    var temp = snap.val().temp;
+    // var soil = snap.val().soil;
+    // var temp = snap.val().temp;
     if (rain === "ON") document.querySelector("#btnRain").click();
     else if (servo === "ON") document.querySelector("#btnServo").click();
     else if (lamp === "ON") document.querySelector("#btnLight").click();
@@ -49,23 +49,23 @@ firebase
     else {
       return;
     }
-    dataFirebase(rain, servo, lamp, motor, soil, temp);
+    dataFirebase(rain, servo, lamp, motor);
   });
 
 // -------------- Sensor Soil,Temp -------------
-var soil = document.querySelector("#valueSoil");
-var temp = document.querySelector("#valueTemperature");
-var database = firebase.database();
-database.ref("Garden").on("value", (snap) => {
-  valueSoil = snap.val().soil;
-  soil.innerHTML = snap.val().soil;
-  valueTemp = snap.val().temp;
-  temp.innerHTML = snap.val().temp;
-  firebase.database().ref().set(valueSoil);
-  firebase.database().ref().set(valueTemp);
-  console.log(soil, "soil");
-  console.log(temp, "temp");
-});
+// var soil = document.querySelector("#valueSoil");
+// var temp = document.querySelector("#valueTemperature");
+// var database = firebase.database();
+// database.ref("Garden").on("value", (snap) => {
+//   valueSoil = snap.val().soil;
+//   soil.innerHTML = snap.val().soil;
+//   valueTemp = snap.val().temp;
+//   temp.innerHTML = snap.val().temp;
+//   firebase.database().ref().set(valueSoil);
+//   firebase.database().ref().set(valueTemp);
+//   console.log(soil, "soil");
+//   console.log(temp, "temp");
+// });
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

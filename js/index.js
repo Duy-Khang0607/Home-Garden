@@ -39,9 +39,9 @@ firebase
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
     if (rain === "ON") document.querySelector("#btnRain").click();
-    else if (servo === "ON") document.querySelector("#btnServo").click();
-    else if (lamp === "ON") document.querySelector("#btnLight").click();
-    else if (motor === "ON") document.querySelector("#btnMotor").click();
+    if (servo === "ON") document.querySelector("#btnServo").click();
+    if (lamp === "ON") document.querySelector("#btnLight").click();
+    if (motor === "ON") document.querySelector("#btnMotor").click();
     else {
       return;
     }

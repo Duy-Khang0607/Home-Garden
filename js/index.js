@@ -21,12 +21,14 @@ var valueMotor = "OFF";
 var valueSoil;
 var valueTemp;
 
-function dataFirebase(Rain, servo, lamp, motor) {
+function dataFirebase(Rain, servo, lamp, motor, soil, temp) {
   firebase.database().ref("Garden").set({
     Rain,
     servo,
     lamp,
     motor,
+    soil,
+    temp,
   });
 }
 
@@ -38,6 +40,8 @@ firebase
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
+    var soil = snap.val().soil;
+    var temp = snap.val().temp;
     if (rain === "ON") document.querySelector("#btnRain").click();
     else if (servo === "ON") document.querySelector("#btnServo").click();
     else if (lamp === "ON") document.querySelector("#btnLight").click();
@@ -45,7 +49,7 @@ firebase
     else {
       return;
     }
-    dataFirebase(rain, servo, lamp, motor);
+    dataFirebase(rain, servo, lamp, motor, soil, temp);
   });
 
 // -------------- Sensor Soil,Temp -------------
@@ -60,8 +64,7 @@ database.ref("Garden").on("value", (snap) => {
   temp.innerHTML = snap.val().temp;
   console.log(soil, "soil");
   console.log(temp, "temp");
-  database.set(valueSoil);
-  database.set(valueTemp);
+  dataFirebase(rain, servo, lamp, motor, valueSoil, valueTemp);
 });
 
 function sensorRain() {

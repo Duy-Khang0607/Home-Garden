@@ -60,8 +60,8 @@ database.ref().on("value", (snap) => {
 });
 
 function soilTemp() {
-  var firebaseSoil = firebase.database().ref().child("soil");
-  var firebaseTemp = firebase.database().ref().child("temp");
+  var firebaseSoil = firebase.database().ref("Garden");
+  var firebaseTemp = firebase.database().ref("Garden");
   firebaseSoil.set(valueSoil);
   firebaseTemp.set(valueTemp);
 }

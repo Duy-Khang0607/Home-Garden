@@ -60,18 +60,9 @@ database.ref("Garden").on("value", (snap) => {
   temp.innerHTML = snap.val().temp;
   console.log(soil, "soil");
   console.log(temp, "temp");
+  database.set(valueSoil);
+  database.set(valueTemp);
 });
-
-function soilTemp() {
-  var firebaseSoil = firebase.database();
-  var firebaseTemp = firebase.database();
-  firebaseSoil.set(valueSoil);
-  firebaseTemp.set(valueTemp);
-}
-
-window.onload = () => {
-  soilTemp();
-};
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

@@ -42,6 +42,7 @@ firebase
     if (servo === "ON") document.querySelector("#btnServo").click();
     if (lamp === "ON") document.querySelector("#btnLight").click();
     if (motor === "ON") document.querySelector("#btnMotor").click();
+    dataFirebase(rain, servo, lamp, motor);
   });
 
 // -------------- Sensor Soil -------------

@@ -44,7 +44,6 @@ firebase
     else {
       document.querySelector("#btnMotor").click();
     }
-
     dataFirebase(rain, servo, lamp, motor);
   });
 

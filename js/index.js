@@ -38,10 +38,13 @@ firebase
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
-    if (rain === "ON") document.querySelector("#btnRain").click();
-    if (servo === "ON") document.querySelector("#btnServo").click();
-    if (lamp === "ON") document.querySelector("#btnLight").click();
-    if (motor === "ON") document.querySelector("#btnMotor").click();
+    if (rain === "ON" || servo === "ON" || lamp === "ON" || motor === "ON") {
+      document.querySelector("#btnRain").click();
+      document.querySelector("#btnServo").click();
+      document.querySelector("#btnLight").click();
+      document.querySelector("#btnMotor").click();
+    }
+
     dataFirebase(rain, servo, lamp, motor);
   });
 

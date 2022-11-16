@@ -23,7 +23,7 @@ var valueTemp;
 
 function dataFirebase(Rain, servo, lamp, motor, soil, temp) {
   firebase.database().ref("Garden").set({
-    Rain,
+    rain,
     servo,
     lamp,
     motor,

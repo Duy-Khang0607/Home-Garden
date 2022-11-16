@@ -38,10 +38,10 @@ firebase
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
-    if (rain === "ON" || servo === "ON" || lamp === "ON" || motor === "ON") {
-      document.querySelector("#btnRain").click();
-      document.querySelector("#btnServo").click();
-      document.querySelector("#btnLight").click();
+    if (rain === "ON") document.querySelector("#btnRain").click();
+    else if (servo === "ON") document.querySelector("#btnServo").click();
+    else if (lamp === "ON") document.querySelector("#btnLight").click();
+    else {
       document.querySelector("#btnMotor").click();
     }
 

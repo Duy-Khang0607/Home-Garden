@@ -41,8 +41,9 @@ firebase
     if (rain === "ON") document.querySelector("#btnRain").click();
     else if (servo === "ON") document.querySelector("#btnServo").click();
     else if (lamp === "ON") document.querySelector("#btnLight").click();
+    else if (motor === "ON") document.querySelector("#btnMotor").click();
     else {
-      document.querySelector("#btnMotor").click();
+      return;
     }
     dataFirebase(rain, servo, lamp, motor);
   });

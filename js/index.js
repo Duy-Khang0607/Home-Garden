@@ -34,7 +34,7 @@ function dataFirebase(Rain, servo, lamp, motor, soil, temp) {
 
 firebase
   .database()
-  .ref()
+  .ref("Garden")
   .on("value", (snap) => {
     var rain = snap.val().Rain;
     var servo = snap.val().servo;
@@ -56,13 +56,13 @@ firebase
 var soil = document.querySelector("#valueSoil");
 var temp = document.querySelector("#valueTemperature");
 var database = firebase.database();
-database.ref().on("value", (snap) => {
+database.ref("Garden").on("value", (snap) => {
   valueSoil = snap.val().soil;
   soil.innerHTML = snap.val().soil;
   valueTemp = snap.val().temp;
   temp.innerHTML = snap.val().temp;
-  firebase.database().ref("Garden").set(valueSoil);
-  firebase.database().ref("Garden").set(valueTemp);
+  firebase.database().ref().set(valueSoil);
+  firebase.database().ref().set(valueTemp);
   console.log(soil, "soil");
   console.log(temp, "temp");
 });

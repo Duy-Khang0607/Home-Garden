@@ -63,7 +63,7 @@ database.ref("Garden").on("value", (snap) => {
   temp.innerHTML = snap.val().temp;
   console.log(soil, "soil");
   console.log(temp, "temp");
-  dataFirebase(rain, servo, lamp, motor, valueSoil, valueTemp);
+  dataFirebase(valueSoil, valueTemp);
 });
 
 function sensorRain() {

@@ -53,11 +53,10 @@ firebase
   });
 
 // -------------- Sensor Soil,Temp -------------
-
+var soil = document.querySelector("#valueSoil");
+var temp = document.querySelector("#valueTemperature");
 var database = firebase.database();
 database.ref("Garden").on("value", (snap) => {
-  var soil = document.querySelector("#valueSoil");
-  var temp = document.querySelector("#valueTemperature");
   valueSoil = snap.val().soil;
   soil.innerHTML = snap.val().soil;
   valueTemp = snap.val().temp;

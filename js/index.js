@@ -18,8 +18,8 @@ var stateLamp = false;
 var valueLamp = "OFF";
 var stateMotor = false;
 var valueMotor = "OFF";
-// var stateSoil = true;
-// var valueSoil = 10;
+var valueSoil;
+var valueTemp;
 
 function dataFirebase(Rain, servo, lamp, motor) {
   firebase.database().ref("Garden").set({
@@ -28,48 +28,46 @@ function dataFirebase(Rain, servo, lamp, motor) {
     lamp,
     motor,
   });
-  console.log(Rain);
 }
 
 firebase
   .database()
   .ref("Garden")
   .on("value", (snap) => {
-    snap.forEach((element) => {
-      console.log(element.val() === "ON");
-      if (element.val() === "ON") {
-        document.querySelector(".check").style.background = "red";
-      }
-    });
+    var rain = snap.val().Rain;
+    var servo = snap.val().servo;
+    var lamp = snap.val().lamp;
+    var motor = snap.val().motor;
+    if (rain === "ON") document.querySelector("#btnRain").click();
+    else if (servo === "ON") document.querySelector("#btnServo").click();
+    else if (lamp === "ON") document.querySelector("#btnLight").click();
+    else if (motor === "ON") document.querySelector("#btnMotor").click();
+    else {
+      return;
+    }
   });
 
-// va = firebase
-//   .database()
-//   .ref("Garden")
-//   .child("soil")
-//   .on("value", (snap) => {
-//     if (snap.val() >= 100) {
-//       stateSoil = false;
-//       valueSoil = 100;
-//     } else {
-//       stateSoil = true;
-//       valueSoil = snap.val();
-//       console.log(valueSoil);
-//     }
-//   });
+// -------------- Sensor Soil -------------
+var soil = document.querySelector("#valueSoil");
+firebase
+  .database()
+  .ref("Garden")
+  .on("value", (snap) => {
+    valueSoil = snap.val().soil;
+    soil.innerHTML = snap.val().soil;
+    console.log(valueSoil);
+  });
 
-// function sensorSoil() {
-//   var valueSensorSoil = document.querySelector("#valueSoil");
-//   if (stateSoil) {
-//     valueSensorSoil.innerHTML = valueSoil;
-//   } else {
-//     valueSensorSoil.innerHTML = "100";
-//   }
-//   dataFirebase(valueRain, valueServo, valueLamp, valueMotor, va/ }
-
-window.onload = () => {
-  // sensorSoil();
-};
+// -------------- Sensor Temp -------------
+var temp = document.querySelector("#valueTemperature");
+firebase
+  .database()
+  .ref("Garden")
+  .on("value", (snap) => {
+    valueTemp = snap.val().temp;
+    temp.innerHTML = snap.val().temp;
+    console.log(valueTemp);
+  });
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

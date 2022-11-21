@@ -18,6 +18,7 @@ var stateLamp = false;
 var valueLamp = "OFF";
 var stateMotor = false;
 var valueMotor = "OFF";
+var valueTemp;
 
 function dataFirebase(rain, servo, lamp, motor) {
   firebase.database().ref("Garden").set({
@@ -27,40 +28,37 @@ function dataFirebase(rain, servo, lamp, motor) {
     motor,
   });
 }
-
 firebase
   .database()
   .ref()
   .on("value", (snap) => {
-    var rain = snap.val().Rain;
+    var rain = snap.val().rain;
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
-
     if (rain === "ON") document.querySelector("#btnRain").click();
-    else if (servo === "ON") document.querySelector("#btnServo").click();
     else if (lamp === "ON") document.querySelector("#btnLight").click();
+    else if (servo === "ON") document.querySelector("#btnServo").click();
     else if (motor === "ON") document.querySelector("#btnMotor").click();
     else {
       return;
     }
     dataFirebase(rain, servo, lamp, motor);
+    console.log(snap.val().rain);
   });
 
-// -------------- Sensor Soil,Temp -------------
-// var soil = document.querySelector("#valueSoil");
-// var temp = document.querySelector("#valueTemperature");
-// var database = firebase.database();
-// database.ref("Garden").on("value", (snap) => {
-//   valueSoil = snap.val().soil;
-//   soil.innerHTML = snap.val().soil;
-//   valueTemp = snap.val().temp;
-//   temp.innerHTML = snap.val().temp;
-//   firebase.database().ref().set(valueSoil);
-//   firebase.database().ref().set(valueTemp);
-//   console.log(soil, "soil");
-//   console.log(temp, "temp");
-// });
+// function sensorTemp() {
+//   var nhietDo = document.getElementById("valueTemperature");
+//   var dbRef = firebase.database().ref("Garden").child("temp");
+//   dbRef.on("value", (snap) => {
+//     nhietDo.innerText = snap.val();
+//     valueTemp = nhietDo.innerText;
+//   });
+// }
+
+window.onload = () => {
+  // sensorTemp();
+};
 
 function sensorRain() {
   var imgRain1 = document.querySelector("#imgRain");

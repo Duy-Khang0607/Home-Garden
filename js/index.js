@@ -161,8 +161,8 @@ menuToggle.onclick = () => {
 };
 
 // Menu bar
-let meunuBar = document.querySelector("#menuBar");
-meunuBar.onclick = () => {
-  sidebar.style.opacity = "1";
-  sidebar.style.width = "100px";
-};
+// let meunuBar = document.querySelector("#menuBar");
+// meunuBar.onclick = () => {
+//   sidebar.style.opacity = "1";
+//   sidebar.style.width = "100px";
+// };

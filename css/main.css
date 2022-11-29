@@ -195,7 +195,7 @@ input[type="checkbox"]:checked ~ .check:after {
   position: relative;
   background-color: #4d5df9;
   border-radius: 10px;
-  width: 420px;
+  width: 400px;
   height: 300px;
   padding: 20px;
   color: #fff;
@@ -274,9 +274,6 @@ input[type="checkbox"]:checked ~ .check:after {
     transform: translateY(100px) scale(1);
   }
 }
-#menuBar {
-  opacity: 0;
-}
 
 /* ------------------- Responsive --------------------  */
 @media screen and (max-width: 576px) {
@@ -285,12 +282,10 @@ input[type="checkbox"]:checked ~ .check:after {
     line-height: 35px;
     transform: translateX(50px);
   }
+  .toggle {
+    right: 5px;
+  }
   .sidebar {
     opacity: 0;
-  }
-  #menuBar {
-    font-size: 2.5rem;
-    opacity: 1;
-    transform: translateY(25px);
   }
 }

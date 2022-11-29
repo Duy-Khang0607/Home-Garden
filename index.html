@@ -27,7 +27,8 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3 col-sm-0 col-md-0 col-lg-3">
+          <ion-icon id="menuSidebar" name="menu"></ion-icon>
           <div class="sidebar">
             <ul>
               <li class="list active">
@@ -85,10 +86,10 @@
             </ul>
           </div>
         </div>
-        <div class="col-9">
+        <div class="col-9 col-sm-12 col-md-12 col-lg-9">
           <h2 class="garden__tittle">Smart Home Garden</h2>
           <div class="row text-center garden__content">
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   id="imgRain"
@@ -121,7 +122,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   src="./img/sensor soil.png"
@@ -132,7 +133,7 @@
                 <p>Độ ẩm : <span id="valueSoil"></span>%</p>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   src="./img/maiche.png"
@@ -151,7 +152,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   id="imgLight"
@@ -170,7 +171,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   id="imgMotor"
@@ -189,7 +190,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
               <div class="garden__item">
                 <img
                   src="./img/sensor temperatue.png"
@@ -203,18 +204,10 @@
           </div>
         </div>
       </div>
-
       <div class="toggle">
         <ion-icon name="grid-outline" class="open"></ion-icon>
         <ion-icon name="close-circle-outline" class="close"></ion-icon>
       </div>
-
-      <!-- <div class="toggle-btn" id="unact">
-        <div class="inner-circle"></div>
-      </div>
-      <div class="toggle-btn active" id="act">
-        <div class="inner-circle"></div>
-      </div> -->
     </div>
 
     <script
@@ -239,18 +232,10 @@
     <!-- Fire base  -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
     <script type="module">
-      // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     </script>
     <script src="./js/index.js"></script>
   </body>

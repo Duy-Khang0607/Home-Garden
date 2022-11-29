@@ -1,11 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAI02jDK0PAPNvDyLkPYYpePxk7LKQPOso",
-  authDomain: "home-garden-32525.firebaseapp.com",
-  projectId: "home-garden-32525",
-  storageBucket: "home-garden-32525.appspot.com",
-  messagingSenderId: "638896422279",
-  appId: "1:638896422279:web:74e1ac3ed1cc2afb096722",
-  measurementId: "G-XJZZ5L5D77",
+  apiKey: "AIzaSyCQuGR-TLofY3cknj9hxV30Cgl9lUXCBE8",
+  authDomain: "home-garden-7da60.firebaseapp.com",
+  databaseURL: "https://home-garden-7da60-default-rtdb.firebaseio.com",
+  projectId: "home-garden-7da60",
+  storageBucket: "home-garden-7da60.appspot.com",
+  messagingSenderId: "764448158497",
+  appId: "1:764448158497:web:d7d0cabd295ecec1324460",
+  measurementId: "G-6D4P013Z6J",
 };
 firebase.initializeApp(firebaseConfig);
 // -------------------------------------------
@@ -20,44 +21,53 @@ var stateMotor = false;
 var valueMotor = "OFF";
 var valueTemp;
 
-function dataFirebase(rain, servo, lamp, motor) {
+function dataFirebase(rain, servo, lamp, motor, temp) {
   firebase.database().ref("Garden").set({
     rain,
     servo,
     lamp,
     motor,
+    temp,
   });
 }
-firebase
-  .database()
-  .ref("Garden")
-  .on("value", (snap) => {
+
+function changeValueFirebase() {
+  var database = firebase.database();
+  database.ref("Garden").on("value", (snap) => {
     var rain = snap.val().rain;
     var servo = snap.val().servo;
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
-    if (rain === "ON") document.querySelector("#btnRain").click();
-    else if (lamp === "ON") document.querySelector("#btnLight").click();
-    else if (servo === "ON") document.querySelector("#btnServo").click();
-    else if (motor === "ON") document.querySelector("#btnMotor").click();
-    else {
-      return;
-    }
-    dataFirebase(rain, servo, lamp, motor);
-    console.log(snap.val().rain);
-  });
+    var temp = snap.val().temp;
 
-// function sensorTemp() {
-//   var nhietDo = document.getElementById("valueTemperature");
-//   var dbRef = firebase.database().ref("Garden").child("temp");
-//   dbRef.on("value", (snap) => {
-//     nhietDo.innerText = snap.val();
-//     valueTemp = nhietDo.innerText;
-//   });
-// }
+    if (rain === "ON") document.querySelector("#btnRain").click();
+
+    if (lamp === "ON") document.querySelector("#btnLight").click();
+
+    if (servo === "ON") document.querySelector("#btnServo").click();
+
+    if (motor === "ON") document.querySelector("#btnMotor").click();
+
+    if (temp >= 100) temp = 10;
+
+    dataFirebase(rain, servo, lamp, motor, temp);
+  });
+}
+
+function sensorTemp() {
+  var nhietDo = document.getElementById("valueTemperature");
+  var dbRef = firebase.database().ref("Garden").child("temp");
+  dbRef.on("value", (snap) => {
+    nhietDo.innerText = snap.val();
+    valueTemp = nhietDo.innerText;
+    console.log(valueTemp);
+  });
+}
 
 window.onload = () => {
   // sensorTemp();
+  changeValueFirebase();
+  sensorTemp();
 };
 
 function sensorRain() {
@@ -80,7 +90,7 @@ function sensorRain() {
     document.querySelector("#modeRain").innerHTML = "Không mưa";
     document.querySelector(".rain").style.opacity = "0";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor);
+  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
 
 function motorServo() {
@@ -98,7 +108,7 @@ function motorServo() {
     document.querySelector("#imgServo").style.animation = "none";
     document.querySelector("#modeServo").innerHTML = "OFF";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor);
+  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
 
 function sensorLight() {
@@ -110,7 +120,7 @@ function sensorLight() {
     valueLamp = "OFF";
     document.querySelector("#modeLight").innerHTML = "Trời tối: 0";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor);
+  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
 
 function motorWater() {
@@ -127,7 +137,7 @@ function motorWater() {
     document.querySelector("#imgMotor").style.animation = "none";
     document.querySelector("#modeMotor").innerHTML = "OFF";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor);
+  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
 
 // Active sidebar

@@ -185,13 +185,13 @@ input[type="checkbox"]:checked ~ .check:after {
   text-align: center;
   padding: 20px 0;
 }
+.garden__content {
+}
 .garden__content img {
   background-color: transparent;
   object-fit: cover;
 }
-.col-4 {
-  margin: 20px 0;
-}
+
 .garden__item {
   position: relative;
   background-color: #4d5df9;
@@ -251,6 +251,9 @@ input[type="checkbox"]:checked ~ .check:after {
   animation: rainOn 0.5s linear 4s infinite alternate; */
   transition: all 0.5s;
 }
+.garden__content {
+  gap: 30px;
+}
 
 /* ----------------- Hiệu ứng ----------- */
 @keyframes rainOn {
@@ -270,5 +273,26 @@ input[type="checkbox"]:checked ~ .check:after {
   }
   100% {
     transform: translateY(100px) scale(1);
+  }
+}
+#menuSidebar {
+  opacity: 0;
+}
+
+/* ------------------- Responsive --------------------  */
+@media screen and (max-width: 576px) {
+  .garden__tittle {
+    font-size: 2rem;
+    line-height: 35px;
+  }
+  .sidebar {
+    opacity: 0;
+  }
+  #menuSidebar {
+    font-size: 3rem;
+    opacity: 1;
+  }
+  .garden__content {
+    width: 100%;
   }
 }

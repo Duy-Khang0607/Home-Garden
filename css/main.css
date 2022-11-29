@@ -292,7 +292,7 @@ input[type="checkbox"]:checked ~ .check:after {
     font-size: 3rem;
     opacity: 1;
   }
-  .garden__content {
-    width: 100%;
-  }
+  /* .garden__content {
+    max-width: 100%;
+  } */
 }

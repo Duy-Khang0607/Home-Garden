@@ -104,7 +104,14 @@ function sensorRain() {
     document.querySelector("#modeRain").innerHTML = "No rain";
     document.querySelector(".rain").style.opacity = "0";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
+  dataFirebase(
+    valueRain,
+    valueServo,
+    valueLamp,
+    valueMotor,
+    valueTemp,
+    valueSoil
+  );
 }
 
 function motorServo() {
@@ -122,7 +129,14 @@ function motorServo() {
     document.querySelector("#imgServo").style.animation = "none";
     document.querySelector("#modeServo").innerHTML = "OFF";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
+  dataFirebase(
+    valueRain,
+    valueServo,
+    valueLamp,
+    valueMotor,
+    valueTemp,
+    valueSoil
+  );
 }
 
 function sensorLight() {
@@ -140,7 +154,14 @@ function sensorLight() {
     valueLamp = 0;
     document.querySelector("#modeLight").innerHTML = "Dark";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
+  dataFirebase(
+    valueRain,
+    valueServo,
+    valueLamp,
+    valueMotor,
+    valueTemp,
+    valueSoil
+  );
 }
 
 function motorWater() {
@@ -159,7 +180,14 @@ function motorWater() {
     document.querySelector("#modeMotor").innerHTML = "OFF";
     document.querySelector(".motor").style.opacity = "0";
   }
-  dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
+  dataFirebase(
+    valueRain,
+    valueServo,
+    valueLamp,
+    valueMotor,
+    valueTemp,
+    valueSoil
+  );
 }
 
 // Active sidebar

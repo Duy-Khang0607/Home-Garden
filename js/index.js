@@ -20,14 +20,16 @@ var valueLamp = 0;
 var stateMotor = false;
 var valueMotor = 0;
 var valueTemp;
+var valueSoil;
 
-function dataFirebase(rain, servo, lamp, motor, temp) {
+function dataFirebase(rain, servo, lamp, motor, temp, soil) {
   firebase.database().ref("Garden").set({
     rain,
     servo,
     lamp,
     motor,
     temp,
+    soil,
   });
 }
 
@@ -39,6 +41,7 @@ function changeValueFirebase() {
     var lamp = snap.val().lamp;
     var motor = snap.val().motor;
     var temp = snap.val().temp;
+    var soil = snap.val().soil;
 
     if (rain === 1) document.querySelector("#btnRain").click();
 
@@ -49,8 +52,9 @@ function changeValueFirebase() {
     if (motor === 1) document.querySelector("#btnMotor").click();
 
     if (temp >= 100) temp = 10;
+    if (soil >= 100) soil = 10;
 
-    dataFirebase(rain, servo, lamp, motor, temp);
+    dataFirebase(rain, servo, lamp, motor, temp, soil);
   });
 }
 
@@ -64,10 +68,21 @@ function sensorTemp() {
   });
 }
 
+function sensorSoil() {
+  var doAm = document.getElementById("valueSoil");
+  var dbRef = firebase.database().ref("Garden").child("soil");
+  dbRef.on("value", (snap) => {
+    doAm.innerText = snap.val();
+    valueSoil = doAm.innerText;
+    console.log(valueSoil);
+  });
+}
+
 window.onload = () => {
   // sensorTemp();
   changeValueFirebase();
   sensorTemp();
+  sensorSoil();
 };
 
 function sensorRain() {

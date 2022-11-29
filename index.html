@@ -33,7 +33,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-0 col-sm-3 col-md-0 col-lg-3">
+        <div class="col-0 col-sm-0 col-md-0 col-lg-2 col-xl-2">
           <!-- <i class="fa fa-bars" id="menuBar"></i> -->
           <div class="sidebar">
             <ul>
@@ -92,7 +92,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-12 col-lg-9 garden">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 garden">
           <h2 class="garden__tittle">Smart Home Garden</h2>
           <div class="row text-center garden__content">
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
@@ -118,7 +118,7 @@
                   <span style="--i: 10"></span>
                 </div>
                 <h3>Rain sensor</h3>
-                <p id="modeRain">Không có mưa</p>
+                <p id="modeRain">No rain</p>
                 <label>
                   <input type="Checkbox" />
                   <span
@@ -135,8 +135,8 @@
                   alt=""
                   width="150px"
                   class="img-fluid rounded" />
-                <h3>Soil moisture sensor</h3>
-                <p>Độ ẩm : <span id="valueSoil"></span>%</p>
+                <h3>Soil humidity sensor</h3>
+                <p>Humidity : <span id="valueSoil"></span>%</p>
               </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
@@ -148,7 +148,7 @@
                   width="150px"
                   class="img-fluid rounded" />
                 <h3>Servo</h3>
-                <p>Chế độ : <span id="modeServo">OFF</span></p>
+                <p>Mode : <span id="modeServo">OFF</span></p>
                 <label>
                   <input type="Checkbox" />
                   <span
@@ -162,12 +162,12 @@
               <div class="garden__item">
                 <img
                   id="imgLight"
-                  src="./img/light.png"
+                  src="./img/lampOFF.png"
                   alt=""
                   width="150px"
                   class="img-fluid rounded" />
                 <h3>Sensor Light</h3>
-                <p id="modeLight">Trời tối: 0</p>
+                <p id="modeLight">Dark</p>
                 <label>
                   <input type="Checkbox" />
                   <span
@@ -185,8 +185,12 @@
                   alt=""
                   width="150px"
                   class="img-fluid rounded" />
+                <div class="motor">
+                  <span style="--i: 11"></span>
+                  <span style="--i: 17"></span>
+                </div>
                 <h3>Motor</h3>
-                <p>Chế độ : <span id="modeMotor">OFF</span></p>
+                <p>Mode : <span id="modeMotor">OFF</span></p>
                 <label>
                   <input type="Checkbox" />
                   <span
@@ -204,7 +208,7 @@
                   width="150px"
                   class="img-fluid rounded" />
                 <h3>Sensor Temperature</h3>
-                <p>Nhiệt độ : <span id="valueTemperature"></span>°C</p>
+                <p>Temp : <span id="valueTemperature"></span>°C</p>
               </div>
             </div>
           </div>
@@ -214,6 +218,7 @@
         <ion-icon name="grid-outline" class="open"></ion-icon>
         <ion-icon name="close-circle-outline" class="close"></ion-icon>
       </div>
+      <audio id="audio" src="click.mp3" autostart="false"></audio>
     </div>
 
     <script

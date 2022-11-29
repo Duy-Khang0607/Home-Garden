@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 .sidebar.active {
-  width: 340px;
+  width: 290px;
 }
 .sidebar ul {
   position: absolute;
@@ -177,7 +177,9 @@ input[type="checkbox"]:checked ~ .check:after {
   transform: translateX(20px);
   background-color: #fff;
 }
-
+#audio {
+  display: none;
+}
 /* ---------------- Control Sensor ------------  */
 .garden__tittle {
   font-size: 3rem;
@@ -193,8 +195,12 @@ input[type="checkbox"]:checked ~ .check:after {
   background-color: transparent;
   object-fit: cover;
 }
-.garden__content {
-  gap: 20px;
+.garden__content .col-xl-4,
+.garden__content .col-lg-4,
+.garden__content .col-md-6,
+.garden__content .col-sm-12,
+.garden__content .col-12 {
+  margin: 20px 0;
 }
 
 .garden__item {
@@ -251,6 +257,30 @@ input[type="checkbox"]:checked ~ .check:after {
   animation: rain 5s linear infinite;
   animation-duration: calc(15s / var(--i));
 }
+.motor {
+  position: relative;
+  box-sizing: border-box;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  opacity: 0;
+}
+.motor span {
+  position: relative;
+  bottom: 50px;
+  left: 30%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #30a6eb;
+  margin: 0 2px;
+  border-radius: 50%;
+  animation: rain 5s linear infinite;
+  animation-duration: calc(15s / var(--i));
+  z-index: 9999;
+}
 #imgServo {
   /* transform: rotate(30deg);
   animation: rainOn 0.5s linear 4s infinite alternate; */
@@ -279,6 +309,29 @@ input[type="checkbox"]:checked ~ .check:after {
 }
 
 /* ------------------- Responsive --------------------  */
+@media screen and (max-width: 1200px) {
+  .garden__tittle {
+    font-weight: bold;
+    line-height: 35px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .garden__tittle {
+    font-weight: bold;
+    line-height: 35px;
+  }
+  .sidebar {
+    opacity: 0;
+    z-index: 999;
+  }
+}
+@media screen and (max-width: 768px) {
+  .garden__tittle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 35px;
+  }
+}
 @media screen and (max-width: 576px) {
   .garden__tittle {
     font-size: 1.7rem;
@@ -288,13 +341,4 @@ input[type="checkbox"]:checked ~ .check:after {
   .toggle {
     right: 5px;
   }
-  .sidebar {
-    opacity: 0;
-  }
-  /* .sidebar {
-    opacity: 1;
-    z-index: 999;
-  }
-  .sidebar.active .garden__content {
-  } */
 }

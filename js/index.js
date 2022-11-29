@@ -12,13 +12,13 @@ firebase.initializeApp(firebaseConfig);
 // -------------------------------------------
 
 var stateRain = false;
-var valueRain = "OFF";
+var valueRain = 0;
 var stateServo = false;
-var valueServo = "OFF";
+var valueServo = 0;
 var stateLamp = false;
-var valueLamp = "OFF";
+var valueLamp = 0;
 var stateMotor = false;
-var valueMotor = "OFF";
+var valueMotor = 0;
 var valueTemp;
 
 function dataFirebase(rain, servo, lamp, motor, temp) {
@@ -40,13 +40,13 @@ function changeValueFirebase() {
     var motor = snap.val().motor;
     var temp = snap.val().temp;
 
-    if (rain === "ON") document.querySelector("#btnRain").click();
+    if (rain === 1) document.querySelector("#btnRain").click();
 
-    if (lamp === "ON") document.querySelector("#btnLight").click();
+    if (lamp === 1) document.querySelector("#btnLight").click();
 
-    if (servo === "ON") document.querySelector("#btnServo").click();
+    if (servo === 1) document.querySelector("#btnServo").click();
 
-    if (motor === "ON") document.querySelector("#btnMotor").click();
+    if (motor === 1) document.querySelector("#btnMotor").click();
 
     if (temp >= 100) temp = 10;
 
@@ -76,18 +76,17 @@ function sensorRain() {
   var imgOff = "./img/rainOff.png";
   stateRain = !stateRain;
   if (stateRain) {
-    valueRain = "ON";
+    valueRain = 1;
     imgRain1.src = imgOn;
     imgRain1.style.animation = "rainOn 0.5s linear  infinite alternate";
     document.querySelector("#modeRain").innerHTML =
-      `Có mưa` +
-      `<ion-icon name="thunderstorm-outline" class="ml-1"></ion-icon>`;
+      `Rain` + `<ion-icon name="thunderstorm-outline" class="ml-1"></ion-icon>`;
     document.querySelector(".rain").style.opacity = "1";
   } else {
-    valueRain = "OFF";
+    valueRain = 0;
     imgRain1.src = imgOff;
     imgRain1.style.animation = "none";
-    document.querySelector("#modeRain").innerHTML = "Không mưa";
+    document.querySelector("#modeRain").innerHTML = "No rain";
     document.querySelector(".rain").style.opacity = "0";
   }
   dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
@@ -97,13 +96,13 @@ function motorServo() {
   // var servo = document.querySelector("#modeServo").innerHTML;
   stateServo = !stateServo;
   if (stateServo) {
-    valueServo = "ON";
+    valueServo = 1;
     document.querySelector("#imgServo").style.transform = "rotate(30deg)";
     document.querySelector("#imgServo").style.animation =
       "rainOn 0.5s linear  infinite alternate";
     document.querySelector("#modeServo").innerHTML = "ON";
   } else {
-    valueServo = "OFF";
+    valueServo = 0;
     document.querySelector("#imgServo").style.transform = "rotate(0)";
     document.querySelector("#imgServo").style.animation = "none";
     document.querySelector("#modeServo").innerHTML = "OFF";
@@ -112,13 +111,19 @@ function motorServo() {
 }
 
 function sensorLight() {
+  var imgLight = document.querySelector("#imgLight");
+  var imgOn = "./img/lampON.png";
+  var imgOff = "./img/lampOFF.png";
   stateLamp = !stateLamp;
   if (stateLamp) {
-    valueLamp = "ON";
-    document.querySelector("#modeLight").innerHTML = "Trời sáng: 1";
+    valueLamp = 1;
+    imgLight.src = imgOn;
+    document.querySelector("#modeLight").innerHTML =
+      "Light" + `<ion-icon name="sunny-outline" class="ml-2"></ion-icon>`;
   } else {
-    valueLamp = "OFF";
-    document.querySelector("#modeLight").innerHTML = "Trời tối: 0";
+    imgLight.src = imgOff;
+    valueLamp = 0;
+    document.querySelector("#modeLight").innerHTML = "Dark";
   }
   dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
@@ -126,24 +131,28 @@ function sensorLight() {
 function motorWater() {
   stateMotor = !stateMotor;
   if (stateMotor) {
-    valueMotor = "ON";
+    valueMotor = 1;
     document.querySelector("#imgMotor").style.transform = "rotate(30deg)";
     document.querySelector("#imgMotor").style.animation =
       "rainOn 0.5s linear  infinite alternate";
     document.querySelector("#modeMotor").innerHTML = "ON";
+    document.querySelector(".motor").style.opacity = "1";
   } else {
-    valueMotor = "OFF";
+    valueMotor = 0;
     document.querySelector("#imgMotor").style.transform = "rotate(0)";
     document.querySelector("#imgMotor").style.animation = "none";
     document.querySelector("#modeMotor").innerHTML = "OFF";
+    document.querySelector(".motor").style.opacity = "0";
   }
   dataFirebase(valueRain, valueServo, valueLamp, valueMotor, valueTemp);
 }
 
 // Active sidebar
 let list = document.querySelectorAll(".list");
+let audio = document.querySelector("#audio");
 for (let index = 0; index < list.length; index++) {
   list[index].onclick = () => {
+    audio.play();
     let j = 0;
     while (j < list.length) {
       list[j++].className = "list";

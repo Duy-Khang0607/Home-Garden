@@ -44,12 +44,15 @@ function changeValueFirebase() {
     var soil = snap.val().soil;
 
     if (rain === 1) document.querySelector("#btnRain").click();
+    else {
+      document.querySelector("#btnRain").click();
+    }
 
-    if (lamp === 1) document.querySelector("#btnLight").click();
+    // if (lamp === 1) document.querySelector("#btnLight").click();
 
-    if (servo === 1) document.querySelector("#btnServo").click();
+    // if (servo === 1) document.querySelector("#btnServo").click();
 
-    if (motor === 1) document.querySelector("#btnMotor").click();
+    // if (motor === 1) document.querySelector("#btnMotor").click();
 
     if (temp >= 100) temp = 10;
     if (soil >= 100) soil = 10;

@@ -290,10 +290,12 @@ input[type="checkbox"]:checked ~ .check:after {
     opacity: 0;
   }
   #menuSidebar {
-    font-size: 3rem;
+    font-size: 2.5rem;
     opacity: 1;
     transform: translateY(20px);
   }
-  #menuSidebar:focus {
+  #menuSidebar:focus .sidebar {
+    opacity: 1;
+    width: 100px;
   }
 }

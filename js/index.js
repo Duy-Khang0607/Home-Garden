@@ -159,3 +159,10 @@ menuToggle.onclick = () => {
   menuToggle.classList.toggle("active");
   sidebar.classList.toggle("active");
 };
+
+// Menu bar
+let meunuBar = document.querySelector("#menuBar");
+meunuBar.onclick = () => {
+  sidebar.style.opacity = "1";
+  sidebar.style.width = "100px";
+};

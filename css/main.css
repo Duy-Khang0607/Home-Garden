@@ -196,7 +196,7 @@ input[type="checkbox"]:checked ~ .check:after {
   position: relative;
   background-color: #4d5df9;
   border-radius: 10px;
-  width: 450px;
+  width: 420px;
   height: 300px;
   padding: 20px;
   color: #fff;
@@ -282,8 +282,9 @@ input[type="checkbox"]:checked ~ .check:after {
 /* ------------------- Responsive --------------------  */
 @media screen and (max-width: 576px) {
   .garden__tittle {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 35px;
+    transform: translateX(50px);
   }
   .sidebar {
     opacity: 0;
@@ -291,8 +292,8 @@ input[type="checkbox"]:checked ~ .check:after {
   #menuSidebar {
     font-size: 3rem;
     opacity: 1;
+    transform: translateY(20px);
   }
-  /* .garden__content {
-    max-width: 100%;
-  } */
+  #menuSidebar:focus {
+  }
 }

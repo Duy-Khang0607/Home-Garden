@@ -41,7 +41,7 @@ function changeValueFirebase() {
     var motor = snap.val().motor;
     var temp = snap.val().temp;
     var soil = snap.val().soil;
-    if (rain === 0) document.querySelector("#btnRain").click();
+    if (rain) document.querySelector("#btnRain").click();
     if (lamp) document.querySelector("#btnLight").click();
     if (servo) document.querySelector("#btnServo").click();
     if (motor) document.querySelector("#btnMotor").click();
